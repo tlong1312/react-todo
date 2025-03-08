@@ -1,9 +1,10 @@
 import {useState} from 'react';
 import './App.css';
-import TodoTable from './components/TodoTable';
-import NewTodoForm from './components/NewTodoForm';
+import {TodoTable} from './components/TodoTable';
+import {NewTodoForm} from './components/NewTodoForm';
+import React from 'react';
 
-function App() {
+export const App = () => {
 
   const [showAddTodoForm, setShowAddTodoForm] = useState(false);
 
@@ -14,7 +15,7 @@ function App() {
     {rowNumber: 4, rowDescription: 'Charge phone battery', rowAssigned: 'User 4'}
   ])
 
-  const addTodo = (description, assgined) => {
+  const addTodo = (description: string , assgined: string) => {
     let rowNumber = 0;
     if(todos.length > 0) {
       rowNumber = todos[todos.length - 1].rowNumber + 1;
@@ -30,7 +31,7 @@ function App() {
     
   }
 
-  const deleteTodo = (deleteRowNumber) => {
+  const deleteTodo = (deleteRowNumber: number) => {
     let fileredTodos = todos.filter(todo => todo.rowNumber !== deleteRowNumber);
     setTodos(fileredTodos);
   }
@@ -56,4 +57,3 @@ function App() {
   );
 }
 
-export default App;
